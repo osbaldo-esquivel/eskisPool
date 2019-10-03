@@ -37,7 +37,7 @@ class PoolController extends Controller
         if (! $result->isEmpty()) {
             $updateResult = $this->db->table('pools')
                                 ->where('id', $result[0]->id)
-                                ->update(['picks' => $picks]);
+                                ->update(['picks' => $picks, 'score' => $request['score']]);
 
             if ($updateResult) {
                 return back()->with('status', 'Picks updated')->withInput();
@@ -46,7 +46,7 @@ class PoolController extends Controller
             return back()->with('status', 'Error updating picks')->withInput();
         }
         
-        $pool = new Pool($request['user_id'], $picks, config('pool.week'));
+        $pool = new Pool($request['user_id'], $picks, config('pool.week'), $request['score']);
 
         if ($pool->save()) {
             return back()->with('status', 'Picks saved')->withInput();

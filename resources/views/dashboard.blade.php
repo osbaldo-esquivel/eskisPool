@@ -10,7 +10,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Pool Choices</div>
+                <div class="card-header">
+                    <h1>Week {{ config('pool.week') }}</h1>
+                </div>
                 <div class="card-body">
                     <table class="table table-dark table-hover table-striped text-center">
                         <thead>
@@ -43,6 +45,11 @@
                                         </td>
                                     </tr>
                                 @endforeach
+                                <tr>
+                                    <td colspan="4">
+                                        <input type="number" min="0" max="150" name="score">
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td colspan="4">
                                         <input name="user_id" type="hidden" value="{{ Auth::user()->id }}">
