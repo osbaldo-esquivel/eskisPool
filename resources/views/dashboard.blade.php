@@ -26,6 +26,14 @@
                         <tbody>
                             <form method="POST" action="savePicks">
                                 @foreach ($games->getGames() as $game)
+                                    @if ($loop->last)
+                                        <tr>
+                                            <td colspan="4">
+                                                <img src="{{ URL::asset('/images/monday.png') }}"
+                                                    alt="MNF" height="60" width="60">
+                                            </td>
+                                        </tr>
+                                    @endif
                                     <tr>
                                         <td>{{ $game->date }}</td>
                                         <td>{{ $game->time }}</td>
@@ -40,8 +48,6 @@
                                             alt="{{ $game->home_team }}" 
                                             height="40" width="40">
                                             <input name="{{ $loop->index }}" type="checkbox" value="{{ $game->home_team }}">
-                                        </td>
-                                        <td>
                                         </td>
                                     </tr>
                                 @endforeach
