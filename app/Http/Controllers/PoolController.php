@@ -39,7 +39,11 @@ class PoolController extends Controller
                                 ->where('id', $result[0]->id)
                                 ->update(['picks' => $picks]);
 
-            dd($updateResult);
+            if ($updateResult) {
+                return back()->with('status', 'Picks updated')->withInput();
+            }
+
+            return back()->with('status', 'Error updating picks')->withInput();
         }
         
         $pool = new Pool($request['user_id'], $picks, config('pool.week'));
