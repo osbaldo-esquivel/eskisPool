@@ -7,6 +7,7 @@
             {{ session('status') }}
         </div>
     @endif
+    @if (! $locked['locked'])
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
@@ -68,6 +69,17 @@
                     </table>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+@endif
+<div class="row">
+    <div class="card">
+        <div class="card-header">
+            <h1>Nope</h1>
+        </div>
+        <div class="card-body">
+            <h1>Pool is locked</h1>
         </div>
     </div>
 </div>
