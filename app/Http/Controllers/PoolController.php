@@ -3,24 +3,47 @@
 use Illuminate\Http\Request;
 use Illuminate\Database\ConnectionInterface;
 use App\Pool;
+use App\User;
 
 class PoolController extends Controller
 {
     private $db;
+    private $user;
 
-    public function __construct(ConnectionInterface $db)
+    public function __construct(ConnectionInterface $db, User $user)
     {
         $this->db = $db;
+        $this->user = $user;
     }
 
     public function index()
     {
-        return view('pool');
+        $total = $this->db->table('pools')
+                      ->where('week', config('pool.week'))
+                      ->count();
+
+        $info = $this->db->table('pools')
+                     ->where('week', config('pool.week'))
+                     ->get();
+
+        $games = $this->db->table('games')
+                      ->select('away_team', 'home_team')
+                      ->where('week', config('pool.week'))
+                      ->get();
+
+        $pool = [
+            "total" => $total,
+            'info'  => $info,
+            'games' => $games,
+        ];
+
+        return view('pool')->with('pool', $pool);
     }
 
     public function savePicks(Request $request)
     {
         $picks = [];
+        $name = $this->user->getName($request['user_id']);
 
         foreach ($request->all() as $key => $value) {
             if(is_int($key)) {
@@ -46,7 +69,7 @@ class PoolController extends Controller
             return back()->with('status', 'Error updating picks')->withInput();
         }
         
-        $pool = new Pool($request['user_id'], $picks, config('pool.week'), $request['score']);
+        $pool = new Pool($request['user_id'], $picks, config('pool.week'), $request['score'], $name);
 
         if ($pool->save()) {
             return back()->with('status', 'Picks saved')->withInput();

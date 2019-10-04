@@ -8,11 +8,12 @@ class Pool extends Model
         'picks' => 'array'
     ];
 
-    public function __construct(int $user_id, array $picks, int $week, int $score)
+    public function __construct(int $user_id, array $picks, int $week, int $score, string $username)
     {
         $this->user_id = $user_id;
         $this->picks = $picks;
         $this->week = $week;
         $this->score = $score;
+        $this->username = $username;
     }
 }
