@@ -7,7 +7,7 @@
             @notmobile<div class="col-md-16">@endnotmobile
                 <div class="card">
                     <div class="card-header">
-                        <h1>Pool amount: ${{ $pool['total'] * 5 }}</h1>
+                        <h4>Pool</h4>
                     </div>
                     <div class="card-body">
                         <div style="overflow-x:auto;">
@@ -23,20 +23,34 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
                                     @foreach ($pool['info'] as $info)
-                                        <td>{{ $info->username }}</td>
-                                        @foreach (json_decode($info->picks) as $pick)
-                                            <td>
-                                                <img src="/images/{{ $pick }}.ico" height="30" width="30">
-                                            </td>
-                                        @endforeach
-                                        <td>{{ $info->score }}</td>
-                                        <td>{{ $info->wins }}</td>
+                                        <tr>
+                                            <td>{{ $info->username }}</td>
+                                            @foreach (json_decode($info->picks) as $pick)
+                                                <td>
+                                                    <img src="/images/{{ $pick }}.ico" height="30" width="30">
+                                                </td>
+                                            @endforeach
+                                            <td>{{ $info->score }}</td>
+                                            <td>{{ $info->wins }}</td>
+                                        </tr>
                                     @endforeach                                    
                                 </tr>
                             </tbody>
                         </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Stats</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="jumbotron">
+                            <h4>Players: {{ $pool['total'] }}</h4>
+                            <h4>Pool amount: ${{ $pool['total'] * 5 }}</h4>
                         </div>
                     </div>
                 </div>

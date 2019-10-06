@@ -7,7 +7,7 @@
             {{ session('status') }}
         </div>
     @endif
-    @if (! $locked['locked'])
+    @if ($locked['locked'])
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
