@@ -7,7 +7,6 @@
             {{ session('status') }}
         </div>
     @endif
-    @if (! $locked['locked'])
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
@@ -18,26 +17,14 @@
                     <table class="table table-dark table-hover table-striped text-center">
                         <thead>
                             <tr>
-                                <th>Date</th>
-                                <th>Time</th>
                                 <th>Away Team</th>
                                 <th>Home Team</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <form method="POST" action="savePicks">
+                            <form method="POST" action="saveWins">
                                 @foreach ($games->getGames() as $game)
-                                    @if ($loop->last)
-                                        <tr>
-                                            <td colspan="4">
-                                                <img src="{{ URL::asset('/images/monday.png') }}"
-                                                    alt="MNF" height="60" width="60">
-                                            </td>
-                                        </tr>
-                                    @endif
                                     <tr>
-                                        <td>{{ $game->date }}</td>
-                                        <td>{{ $game->time }}</td>
                                         <td>
                                             <img src="{{ URL::asset('/images/' . $game->away_team . '.ico') }}" 
                                             alt="{{ $game->away_team }}" 
@@ -59,7 +46,6 @@
                                 </tr>
                                 <tr>
                                     <td colspan="4">
-                                        <input name="user_id" type="hidden" value="{{ Auth::user()->id }}">
                                         <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                                         <button type="submit" class="btn btn-primary submit">Submit</button>
                                     </td>
@@ -69,17 +55,6 @@
                     </table>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-@endif
-<div class="row">
-    <div class="card">
-        <div class="card-header">
-            <h1>Nope</h1>
-        </div>
-        <div class="card-body">
-            <h1>Pool is locked</h1>
         </div>
     </div>
 </div>

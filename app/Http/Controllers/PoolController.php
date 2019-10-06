@@ -31,10 +31,16 @@ class PoolController extends Controller
                       ->where('week', config('pool.week'))
                       ->get();
 
+        $admin = $this->db->table('admins')
+                      ->select('wins', 'score')
+                      ->where('week', config('pool.week'))
+                      ->get();
+
         $pool = [
             "total" => $total,
             'info'  => $info,
             'games' => $games,
+            'admin' => $admin->first(),
         ];
 
         return view('pool')->with('pool', $pool);

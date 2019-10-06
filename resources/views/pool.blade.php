@@ -27,7 +27,7 @@
                                         <tr>
                                             <td>{{ $info->username }}</td>
                                             @foreach (json_decode($info->picks) as $pick)
-                                                <td>
+                                                <td @if (in_array($pick, json_decode($pool['admin']->wins))) style="background-color:yellow;" @endif>
                                                     <img src="/images/{{ $pick }}.ico" height="30" width="30">
                                                 </td>
                                             @endforeach
@@ -35,7 +35,6 @@
                                             <td>{{ $info->wins }}</td>
                                         </tr>
                                     @endforeach                                    
-                                </tr>
                             </tbody>
                         </table>
                         </div>
