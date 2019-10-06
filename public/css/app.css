@@ -10644,3 +10644,28 @@ a.text-dark:focus {
   }
 }
 
+.navbar {
+  background-color: #454d55;
+}
+
+body {
+  background-color: #7c8288;
+}
+
+.nav-link {
+  color: white;
+}
+
+.card-body {
+  background-color: #ecedee;
+}
+
+.card-header {
+  background-color: #454d55;
+}
+
+card-header,
+h4 {
+  color: white;
+}
+

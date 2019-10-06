@@ -48,8 +48,8 @@
                     </div>
                     <div class="card-body">
                         <div class="jumbotron">
-                            <h4>Players: {{ $pool['total'] }}</h4>
-                            <h4>Pool amount: ${{ $pool['total'] * 5 }}</h4>
+                            <h5>Players: {{ $pool['total'] }}</h5>
+                            <h5>Pool amount: ${{ $pool['total'] * 5 }}</h5>
                         </div>
                     </div>
                 </div>
