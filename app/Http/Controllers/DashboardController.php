@@ -26,7 +26,7 @@ class DashboardController extends Controller
         return view('dashboard', [
             "games" => new Game(config('pool.week')),
             "locked" => [
-                "locked" => Carbon::parse('2019-10-03T17:00:00+00:00', 'America/Los_Angeles')->isPast()
+                "locked" => Carbon::parse(config('pool.lock'), 'America/Los_Angeles')->isPast()
             ],
         ]);
     }

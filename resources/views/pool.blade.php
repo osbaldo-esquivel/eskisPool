@@ -3,13 +3,15 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-16">
+            @mobile<div class="col-md-12">@endmobile
+            @notmobile<div class="col-md-16">@endnotmobile
                 <div class="card">
                     <div class="card-header">
                         <h1>Pool amount: ${{ $pool['total'] * 5 }}</h1>
                     </div>
                     <div class="card-body">
-                        <table class="table table-striped table-dark table-hover table-sm table-bordered text-center">
+                        <div style="overflow-x:auto;">
+                        <table id="poolTable" class="table table-striped table-dark table-hover table-sm table-bordered text-center">
                             <thead>
                                 <tr>
                                     <th>Username</th>
@@ -35,6 +37,7 @@
                                 </tr>
                             </tbody>
                         </table>
+                        </div>
                     </div>
                 </div>
             </div>
