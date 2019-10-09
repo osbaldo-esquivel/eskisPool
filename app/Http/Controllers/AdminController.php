@@ -52,7 +52,7 @@ class AdminController extends Controller
                        ->get();
 
         if (! $result->isEmpty()) {
-            $updateResult = $this->db->table('admin')
+            $updateResult = $this->db->table('admins')
                                 ->where('id', $result[0]->id)
                                 ->update(['wins' => $picks, 'score' => $score, 'week' => config('pool.week')]);
 

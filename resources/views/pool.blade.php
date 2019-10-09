@@ -41,12 +41,14 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row justify-content-center stats">
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
                         <h4>Stats</h4>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <div class="jumbotron">
                             <h5>Players: {{ $pool['total'] }}</h5>
                             <h5>Pool amount: ${{ $pool['total'] * 5 }}</h5>

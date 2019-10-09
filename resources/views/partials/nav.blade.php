@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md topnav shadow-sm">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/dashboard') }}">
-            <img src="/images/logo_200x200.png" height="60" width="60">
+            <img src="/images/logo_200x200.png" class="invert" height="60" width="60">
         </a>
         <ul class="navbar-nav ml-auto">
             @guest

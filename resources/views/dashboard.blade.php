@@ -12,7 +12,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h1>Week {{ config('pool.week') }}</h1>
+                    <h4>Week {{ config('pool.week') }}</h4>
                 </div>
                 <div class="card-body">
                     <table class="table table-dark table-hover table-striped text-center">
@@ -54,6 +54,7 @@
                                 @endforeach
                                 <tr>
                                     <td colspan="4">
+                                        <label for="score">MNF Total Score</label>
                                         <input type="number" min="0" max="150" name="score">
                                     </td>
                                 </tr>

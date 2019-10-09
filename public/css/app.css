@@ -10669,3 +10669,12 @@ h4 {
   color: white;
 }
 
+.stats {
+  margin-top: 20px;
+}
+
+.invert {
+  -webkit-filter: invert(100%);
+          filter: invert(100%);
+}
+
