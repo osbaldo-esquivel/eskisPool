@@ -9,7 +9,7 @@
 
     <title>{{ config('app.name', 'Eski\'s Pool') }}</title>
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     @include('partials.nav')
@@ -20,7 +20,7 @@
             </main>
         </div>
     </div>
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.js') }}"></script>
+    <script src="{{ secure_asset('js/app.js') }}"></script>
+    <script src="{{ secure_asset('js/bootstrap.js') }}"></script>
 </body>
 </html>
