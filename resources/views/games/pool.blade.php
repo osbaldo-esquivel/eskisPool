@@ -15,26 +15,12 @@
                             <thead>
                                 <tr>
                                     <th>Username</th>
-                                    @foreach ($pool['games'] as $game)
-                                        <th>{{ ucfirst($game->away_team) }} @ {{ ucfirst($game->home_team) }}</th>
-                                    @endforeach
+                                    <th>Teams</th>
                                     <th>MNF Score</th>
                                     <th>Wins</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                    @foreach ($pool['info'] as $info)
-                                        <tr>
-                                            <td>{{ $info->username }}</td>
-                                            @foreach (json_decode($info->picks) as $pick)
-                                                <td @if (in_array($pick, json_decode($pool['admin']->wins))) style="background-color:yellow;" @endif>
-                                                    <img src="/images/{{ $pick }}.ico" height="30" width="30">
-                                                </td>
-                                            @endforeach
-                                            <td>{{ $info->score }}</td>
-                                            <td>{{ $info->wins }}</td>
-                                        </tr>
-                                    @endforeach                                    
+                            <tbody>                              
                             </tbody>
                         </table>
                         </div>
@@ -50,8 +36,8 @@
                     </div>
                     <div class="card-body text-center">
                         <div class="jumbotron">
-                            <h5>Players: {{ $pool['total'] }}</h5>
-                            <h5>Pool amount: ${{ $pool['total'] * 5 }}</h5>
+{{--                             <h5>Players: {{ $pool ? $pool['total'] : 0 }}</h5>
+                            <h5>Pool amount: ${{ $pool ? $pool['total'] * 5 : 0 }}</h5> --}}
                         </div>
                     </div>
                 </div>

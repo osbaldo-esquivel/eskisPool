@@ -17,8 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::get('/index', 'IndexController@index')->name('index');
+
+Route::get('/picks', 'PicksController@index')->name('picks');
 Route::get('/pool', 'PoolController@index')->name('pool');
 Route::post('savePicks', 'PoolController@savePicks')->name('savePicks');
 Route::get('/admin', 'AdminController@index')->name('admin');
 Route::post('/saveWins', "AdminController@saveWins")->name('saveWins');
+
+Route::get('/posoy_dos', 'PosoyDosController@index')->name('posoy_dos');
+Route::get('/kings_cup', 'KingsCupController@index')->name('kings_cup');

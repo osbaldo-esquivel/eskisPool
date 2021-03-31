@@ -1,11 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use DB;
 
 class User extends Authenticatable
 {
@@ -38,12 +38,27 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function getName(int $id)
+    protected $dates = [
+        'created_at',
+    ];
+
+    public function getId(): int
     {
-        $result = DB::table('users')->select('name')
-                                    ->where('id', $id)
-                                    ->get();
-        
-        return $result->first()->name;
+        return $this->id;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    public function getCreatedAt(): Carbon
+    {
+        return $this->created_at;
     }
 }
