@@ -13,7 +13,7 @@ class UpdateColumnScoreInAdminsTable extends Migration
      */
     public function up()
     {
-        Schema::table('admins', function (Blueprint $table) {
+        Schema::table('admin', function (Blueprint $table) {
             $table->smallInteger('score')->nullable()->change();
         });
     }
@@ -25,7 +25,7 @@ class UpdateColumnScoreInAdminsTable extends Migration
      */
     public function down()
     {
-        Schema::table('admins', function (Blueprint $table) {
+        Schema::table('admin', function (Blueprint $table) {
             //
         });
     }

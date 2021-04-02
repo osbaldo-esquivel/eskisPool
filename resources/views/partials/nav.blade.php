@@ -15,10 +15,7 @@
                 @endif
             @else
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('dashboard') }}">My Picks</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('pool') }}">Pool</a>
+                    <a class="nav-link" href="{{ route('index') }}">Index</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}"
