@@ -11,19 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'welcome');
 
 Auth::routes();
 
 Route::get('/index', 'IndexController@index')->name('index');
 
-Route::get('/picks', 'PicksController@index')->name('picks');
 Route::get('/pool', 'PoolController@index')->name('pool');
-Route::post('savePicks', 'PoolController@savePicks')->name('savePicks');
-Route::get('/admin', 'AdminController@index')->name('admin');
-Route::post('/saveWins', "AdminController@saveWins")->name('saveWins');
+Route::get('/picks', 'PicksController@index')->name('picks');
+Route::post('/picks/save', 'PoolController@save');
 
-Route::get('/posoy_dos', 'PosoyDosController@index')->name('posoy_dos');
-Route::get('/kings_cup', 'KingsCupController@index')->name('kings_cup');
+Route::get('/posoy-dos', 'PosoyDosController@index')->name('posoy-dos');
+
+Route::get('/kings-cup', 'KingsCupController@index')->name('kings-cup');
+
+Route::get('/hiit', 'HiitController@index')->name('hiit');
+
+Route::get('/power-hour', 'PowerHourController@index')->name('power-hour');
