@@ -25,7 +25,8 @@
                 <button class="btn btn-primary" id="reset">
                     Reset
                 </button>
-                <audio id="audio" src="/sounds/bell.wav"></audio>
+                <audio id="bell" src="{{ asset('/sounds/bell.wav') }}"></audio>
+                <audio id="cheer" src="{{ asset('/sounds/cheer.wav') }}"></audio>
             </div>
         </div>
     </div>
@@ -55,7 +56,7 @@ start_button.addEventListener('click', function() {
     
     var nowDate = new Date();
 
-    var countDownDate = new Date(nowDate.getTime() + (time * 60000)).getTime();
+    var countDownDate = new Date(nowDate.getTime() + (time * 1000)).getTime();
     
     var x = setInterval(function() {    
         var now = new Date().getTime();
@@ -63,11 +64,17 @@ start_button.addEventListener('click', function() {
         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        if (seconds === 0) {
+            document.getElementById('bell').play();
+        } 
         
         timer.innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
         
         if (distance < 0) {
             clearInterval(x);
+
+            document.getElementById('cheer').play();
 
             timer.innerHTML = "Nice.";
         }
@@ -81,8 +88,6 @@ start_button.addEventListener('click', function() {
         
             if (distance1 < 0) {
                 clearInterval(y);
-
-                document.getElementById('audio').play();
             }
         }, 1000);
     }, 1000);
